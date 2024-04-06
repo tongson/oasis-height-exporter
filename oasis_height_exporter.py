@@ -40,7 +40,7 @@ def read_args() -> argparse.Namespace:
 def get_height(url: str) -> float:
     retry_strategy = Retry(
         total=4,
-        status_forcelist=[429, 500, 502, 503, 504],
+        status_forcelist=[104, 408, 425, 429, 500, 502, 503, 504],
     )
     adapter = HTTPAdapter(max_retries=retry_strategy)
     session = requests.Session()
