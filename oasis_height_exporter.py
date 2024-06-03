@@ -48,8 +48,7 @@ def get_height(url: str) -> float:
     try:
         resp = session.get(url)
     except Exception as e:
-        e.add_note("\nError fetching URL.")
-        raise
+        return float(0)
     else:
         if resp.status_code == 200:
             data = resp.json()
@@ -66,8 +65,7 @@ if __name__ == "__main__":
     try:
         prometheus_client.start_http_server(args.port)
     except Exception as e:
-        e.add_note("\nError starting HTTP server.")
-        raise
+        return float(0)
     else:
         register = prometheus_client.Gauge(
             "oasis_latest_block_height",
