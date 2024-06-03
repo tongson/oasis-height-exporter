@@ -66,7 +66,7 @@ if __name__ == "__main__":
         prometheus_client.start_http_server(args.port)
     except Exception as e:
         e.add_note("\nError starting HTTP server.")
--       raise
+        raise
     else:
         register = prometheus_client.Gauge(
             "oasis_latest_block_height",
